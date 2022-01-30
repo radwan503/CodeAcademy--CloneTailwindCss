@@ -1,29 +1,53 @@
 import React, { Fragment, useState } from 'react';
-import { Disclosure, Popover, Transition, Manu } from '@headlessui/react';
+import { Disclosure, Popover, Transition, Manu, Menu } from '@headlessui/react';
 import { IoSearchOutline } from "react-icons/io5";
 import { AiFillCaretDown } from 'react-icons/ai'
-import { HiMenuAlt2,HiX,HiOutlineChevronRight,HiViewGridAdd,HiOutlineCurrencyDollar } from "react-icons/hi";
-import { FaRegAddressBook } from "react-icons/fa";
+import { HiMenuAlt2, HiX, HiOutlineChevronRight, HiViewGridAdd, HiOutlineCurrencyDollar, HiOutlineChevronLeft } from "react-icons/hi";
+import { FaBackward, FaRegAddressBook } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 
 const Navigation = () => {
     const [mobileMenuShow, setMobileMenuShow] = useState(false);
+    const [resourcesSubMenuShow, setResourcesSubMenuShow] = useState(false)
+    const [communitySubMenuShow, setCommunitySubMenuShow] = useState(false)
 
 
     const menuShowBtn = () => {
         setMobileMenuShow(true)
-
     }
     const menuHideBtn = () => {
         setMobileMenuShow(false)
+        setResourcesSubMenuShow(false)
+        setCommunitySubMenuShow(false)
+    }
+
+    const resourcesMobileSubMenuOpen = () => {
+        setResourcesSubMenuShow(true)
 
     }
+
+    const resourcesMobileSubMenuClose = () => {
+        setResourcesSubMenuShow(false)
+    }
+
+    const communityMobileSubMenuOpen = () => {
+        setCommunitySubMenuShow(true)
+
+    }
+
+    const communityMobileSubMenuClose = () => {
+        setCommunitySubMenuShow(false)
+    }
+
+
+
 
     return (
         <header>
             <div className="min-h-full">
                 {/* large screen navbar */}
-                <Disclosure as="nav" className="bg-transparent ">
+                <Menu as="nav" className="bg-transparent">
                     <div className="mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex justify-between h-16 items-center">
                             <div className="flex items-center">
@@ -39,7 +63,7 @@ const Navigation = () => {
                                                     <Popover.Button
                                                         className={`
                                                 ${open ? 'font-bold ' : 'text-opacity-90'}
-                                                text-black inline-flex items-center text-base hover:text-opacity-100 hover:text-violet-700`}>
+                                                text-black font-['system-ui'] inline-flex items-center text-base hover:text-opacity-100 hover:text-violet-700`}>
                                                         <span>Resources</span>
                                                         <AiFillCaretDown
                                                             className={`${open ? 'font-bold rotate-180' : 'text-opacity-70'}
@@ -85,7 +109,7 @@ const Navigation = () => {
                                                     <Popover.Button
                                                         className={`
                                                 ${open ? 'font-bold ' : 'text-opacity-90'}
-                                                text-black inline-flex items-center text-base hover:text-opacity-100 hover:text-violet-700`}>
+                                                text-black font-['system-ui'] inline-flex items-center text-base hover:text-opacity-100 hover:text-violet-700`}>
                                                         <span>Community</span>
                                                         <AiFillCaretDown
                                                             className={`${open ? 'font-bold rotate-180' : 'text-opacity-70'}
@@ -153,18 +177,20 @@ const Navigation = () => {
                             <div className="text-right">
                                 <div className="hidden md:block">
                                     <div className="flex items-center gap-10">
+                                        {/* search button*/}
                                         <Popover className="relative mt-2">
                                             <Popover.Button className="hover:bg-white/[.50] py-2 px-2 rounded">
                                                 <IoSearchOutline className="h-7 w-7 font-thin text-black-50 " />
                                             </Popover.Button>
                                         </Popover>
+
                                         <a href="#" className="text-violet-800 text-base 
                                         font-medium 
                                         hover:bg-white/[.50] py-2 px-3 rounded">Log In</a>
                                     </div>
                                 </div>
 
-                                {/* for mobile menu button */}
+                                {/*mobile menu button */}
                                 <div className="sm:block md:hidden">
                                     <button className="text-black font-bold rounded" onClick={menuShowBtn}>
                                         {mobileMenuShow ?
@@ -173,36 +199,34 @@ const Navigation = () => {
                                             <HiMenuAlt2 className=" block h-10 w-10"></HiMenuAlt2>
                                         }
                                     </button>
-
-     
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    {/* for mobile menu */}
+                    {/* mobile menu */}
                     {mobileMenuShow ?
                         <Popover className="bg-white sm:hidden absolute w-full h-full z-10 top-0">
-                            <div className='mobile-nav flex px-4 py-4 justify-between'>
+                            <div className='mobile-nav flex px-4 py-4 justify-between  overscroll-auto'>
                                 <div className="flex-shrink-0">
-                                        <img className="h-8 w-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="code academy logo"></img>
+                                    <img className="h-8 w-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="code academy logo"></img>
                                 </div>
 
                                 <button className="font-thin rounded " onClick={menuHideBtn}>
-                                            {mobileMenuShow ?
-                                                <HiX className="block h-10 w-10 ml-10"></HiX> :
-                                                ''
-                                            }
+                                    {mobileMenuShow ?
+                                        <HiX className="block h-10 w-10 ml-10"></HiX> :
+                                        ''
+                                    }
                                 </button>
                             </div>
 
                             <div className="search-input px-4 mt-2 pb-10">
                                 <label className="relative block">
-                                    <input 
-                                    className="h-12 w-full border border-black shadow-none focus:outline-none focus:border pl-4 px-12 placeholder:text-slate-500" 
-                                    type="text" 
-                                    name="search" 
-                                    placeholder="Search our catalog" >
+                                    <input
+                                        className="h-12 w-full border border-black shadow-none focus:outline-none focus:border pl-4 px-12 placeholder:text-slate-500"
+                                        type="text"
+                                        name="search"
+                                        placeholder="Search our catalog" >
                                     </input>
                                     <span className="absolute bg-white-500 right-0 px-4 h-12 flex items-center top-0"><IoSearchOutline className="h-5 w-5"></IoSearchOutline></span>
                                 </label>
@@ -213,58 +237,151 @@ const Navigation = () => {
                                 font-[system-ui]">Catalog</a>
                             </div>
 
-                            
+
                             <div className="mobile-menu-list flex-col px-4">
-                                <Disclosure.Button
-                                    as="a" href="#" className="flex items-center justify-between my-10 focus:outline-none">
-                                        <div className="flex items-center">
-                                            <span className="mr-5">
-                                                <FaRegAddressBook></FaRegAddressBook></span>Resources
-                                        </div>
-                                        <div className='flex'>
-                                           <HiOutlineChevronRight></HiOutlineChevronRight>
-                                        </div>
-                                </Disclosure.Button>
+                                <Menu.Item
+                                    as="a" className="flex items-center justify-between my-10 focus:outline-none" onClick={resourcesMobileSubMenuOpen}>
+                                    <div className="flex items-center">
+                                        <span className="mr-5">
+                                            <FaRegAddressBook></FaRegAddressBook></span>Resources
+                                    </div>
+                                    <div className='flex'>
+                                        <HiOutlineChevronRight></HiOutlineChevronRight>
+                                    </div>
+                                </Menu.Item>
 
-                                <Disclosure.Button
-                                    as="a" href="#" className="flex items-center justify-between my-10">
-                                        <div className="flex items-center">
-                                            <span className="mr-5">
-                                                <HiViewGridAdd></HiViewGridAdd></span>Community
-                                        </div>
-                                        <div className='flex'>
-                                           <HiOutlineChevronRight></HiOutlineChevronRight>
-                                        </div>
-                                </Disclosure.Button>
+                                <Menu.Item
+                                    as="a" className="flex items-center justify-between my-10" onClick={communityMobileSubMenuOpen}>
+                                    <div className="flex items-center">
+                                        <span className="mr-5">
+                                            <HiViewGridAdd></HiViewGridAdd></span>Community
+                                    </div>
+                                    <div className='flex'>
+                                        <HiOutlineChevronRight></HiOutlineChevronRight>
+                                    </div>
+                                </Menu.Item>
 
-                                <Disclosure.Button
-                                    as="a" href="#" className="flex items-center justify-between my-10">
-                                        <div className="flex items-center">
-                                            <span className="mr-5">
-                                                <HiOutlineCurrencyDollar></HiOutlineCurrencyDollar></span>Pro Pricing
-                                        </div>
-                                        <div className='flex'>
-                                           <HiOutlineChevronRight></HiOutlineChevronRight>
-                                        </div>
-                                </Disclosure.Button>
+                                <Menu.Button
+                                    as="a" className="flex items-center justify-between my-10">
+                                    <div className="flex items-center">
+                                        <span className="mr-5">
+                                            <HiOutlineCurrencyDollar></HiOutlineCurrencyDollar></span>Pro Pricing
+                                    </div>
+                                    <div className='flex'>
+                                        <HiOutlineChevronRight></HiOutlineChevronRight>
+                                    </div>
+                                </Menu.Button>
                             </div>
 
                             <div className="menu-footer px-4 py-0">
                                 <a href="#" className="text-black-600 font-normal 
-                                font-[system-ui]">For Business</a>
+                                font-[poppins]">For Business</a>
                             </div>
 
                             <div className="sign-group flex items-center flex-col py-10">
                                 <button
-                                className="px-3 py-2 w-24 bg-blue-800 text-white font-medium rounded mb-5">
+                                    className="px-3 py-2 w-24 bg-blue-800 text-white font-medium rounded mb-5">
                                     Sign Up</button>
                                 <button className=" text-indigo-600  font-medium">Log In</button>
                             </div>
-                            
+
+                            {/* mobile submenu */}
+                            {
+                                resourcesSubMenuShow ?
+                                    <Popover className="bg-white absolute sm:hidden w-full h-full z-1 top-16">
+                                        <div className="mobile-submenu-list flex-col px-4">
+                                            {/* back btn */}
+                                            <button className="back-button flex items-center font-base mt-2" onClick={resourcesMobileSubMenuClose}><HiOutlineChevronLeft className="mr-2"></HiOutlineChevronLeft> Full Menu</button>
+                                            {/* submenu title */}
+                                            <p className="submenu-title font-semibold text-2xl mt-5">Resources</p>
+                                            <Menu.Item as="a" href="#" className="flex items-center justify-between my-10 focus:outline-none text-black-300 hover:bg-transparent hover:text-blue-800 ">
+                                                <div className="flex items-center">
+                                                    Challenges
+                                                </div>
+                                            </Menu.Item>
+
+                                            <Menu.Item as="a" href="#" className="flex items-center justify-between my-10 focus:outline-none text-black-300 hover:bg-transparent hover:text-blue-800 ">
+                                                <div className="flex items-center">
+                                                    Docs
+                                                </div>
+                                            </Menu.Item>
+
+
+                                            <Menu.Item as="a" href="#" className="flex items-center justify-between my-10 focus:outline-none text-black-300 hover:bg-transparent hover:text-blue-800 ">
+                                                <div className="flex items-center">
+                                                    CheetSheet
+                                                </div>
+                                            </Menu.Item>
+
+                                            <Menu.Item as="a" href="#" className="flex items-center justify-between my-10 focus:outline-none text-black-300 hover:bg-transparent hover:text-blue-800 ">
+                                                <div className="flex items-center">
+                                                    Articels
+                                                </div>
+                                            </Menu.Item>
+
+
+                                            <Menu.Item as="a" href="#" className="flex items-center justify-between my-10 focus:outline-none text-black-300 hover:bg-transparent hover:text-blue-800 ">
+                                                <div className="flex items-center">
+                                                    Videos
+                                                </div>
+                                            </Menu.Item>
+                                        </div>
+                                    </Popover>
+                                    :
+                                    ""
+                            }
+
+                            {
+                                communitySubMenuShow ?
+                                    <Popover className="bg-white absolute sm:hidden w-full h-full z-1 top-16">
+                                        <div className="mobile-submenu-list flex-col px-4">
+                                            {/* back btn */}
+                                            <button className="back-button flex items-center font-base mt-2" onClick={communityMobileSubMenuClose}><HiOutlineChevronLeft className="mr-2"></HiOutlineChevronLeft> Full Menu</button>
+                                            {/* submenu title */}
+                                            <p className="submenu-title font-semibold text-2xl mt-5">Community</p>
+                                            <Menu.Item as="a" href="#" className="flex items-center justify-between my-10 focus:outline-none text-black-300 hover:bg-transparent hover:text-blue-800 ">
+                                                <div className="flex items-center">
+                                                    Challenges
+                                                </div>
+                                            </Menu.Item>
+
+                                            <Menu.Item as="a" href="#" className="flex items-center justify-between my-10 focus:outline-none text-black-300 hover:bg-transparent hover:text-blue-800 ">
+                                                <div className="flex items-center">
+                                                    Docs
+                                                </div>
+                                            </Menu.Item>
+
+
+                                            <Menu.Item as="a" href="#" className="flex items-center justify-between my-10 focus:outline-none text-black-300 hover:bg-transparent hover:text-blue-800 ">
+                                                <div className="flex items-center">
+                                                    CheetSheet
+                                                </div>
+                                            </Menu.Item>
+
+                                            <Menu.Item as="a" href="#" className="flex items-center justify-between my-10 focus:outline-none text-black-300 hover:bg-transparent hover:text-blue-800 ">
+                                                <div className="flex items-center">
+                                                    Articels
+                                                </div>
+                                            </Menu.Item>
+
+
+                                            <Menu.Item as="a" href="#" className="flex items-center justify-between my-10 focus:outline-none text-black-300 hover:bg-transparent hover:text-blue-800 ">
+                                                <div className="flex items-center">
+                                                    Videos
+                                                </div>
+                                            </Menu.Item>
+                                        </div>
+                                    </Popover>
+                                    :
+                                    ""
+                            }
+
+
+
                         </Popover>
                         : null
                     }
-                </Disclosure>
+                </Menu>
             </div>
         </header>
     )

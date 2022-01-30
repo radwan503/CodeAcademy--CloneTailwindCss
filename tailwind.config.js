@@ -5,13 +5,14 @@ module.exports = {
   theme: {
     container:{
       fontFamily:{
-        'sans':['ui-sans-serif','system-ui','roboto','-apple-system']
+        'sans':['roboto','poppins','system-ui']
       },
       height:{
         '445':'33rem'
       },
       width:{
-        '445':'33rem'
+        '445':'33rem',
+        '400':'25rem'
       },
       padding:{
         lg:'8rem'
