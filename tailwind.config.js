@@ -8,7 +8,10 @@ module.exports = {
         'sans':['roboto','poppins','system-ui']
       },
       height:{
-        '445':'33rem'
+        '445':'33rem',
+        '505':'31.563rem',
+        '50':'3.125rem'
+
       },
       width:{
         '445':'33rem',
@@ -16,6 +19,9 @@ module.exports = {
       },
       padding:{
         lg:'8rem'
+      },
+      backgroundImage:{
+      'dot-pattern':"url('/assets/dot-grid.png')"
       }
     },
     extend: {},
