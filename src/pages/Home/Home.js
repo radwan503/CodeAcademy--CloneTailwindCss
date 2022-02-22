@@ -19,7 +19,7 @@ const Home = () => {
             <Navigation></Navigation>
 
             {/* Banner */}
-            <div className="grid sm:grid-cols-2 px-4 mx-auto gap-40 justify-evenly sm:px-6 lg:px-8 ">
+            <section className="grid sm:grid-cols-2 px-4 mx-auto gap-40 justify-evenly sm:px-6 lg:px-8 ">
                 <div className="mt-20 lg:w-[33rem] w-72 sm:w-96">
                     <div className="relative animate-bounce">
                         <img src={dotGrid} className="mt-5 absolute border-blue-900 border-8 bg-cover"></img>
@@ -34,9 +34,9 @@ const Home = () => {
                     {/* social */}
                     <SocialNetwork></SocialNetwork>
                 </div>
-            </div>
+            </section>
 
-            <div className="flex flex-col px-4 mx-auto sm:px-6 lg:px-8 pt-28 pb-28">
+            <section className="flex flex-col px-4 mx-auto sm:px-6 lg:px-8 pt-28 pb-28">
                 <div className='flex flex-col sm:flex-row gap-10'>
                 {/* Goal Q&A */}
                 <div className="w-full sm:w-[31.563rem] ">
@@ -75,7 +75,7 @@ const Home = () => {
                 </div>
                 </div>
                 <a href='#' className='px-4 py-4 flex justify-end items-center gap-2 font-bold text-violet-800'>Browse catalog <IoArrowForward></IoArrowForward></a>
-            </div>
+            </section>
         </div>
     )
 }
