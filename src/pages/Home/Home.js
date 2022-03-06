@@ -1,7 +1,8 @@
 import React from 'react';
 import Navigation from '../../components/Navigation/Navigation';
 import heroBanner from '../../assets/hero-img.jpeg';
-import dotGrid from '../../assets/pp.png'
+import dotGrid from '../../assets/pp.png';
+import productBanner from '../../assets/product-banner.jpg' ;
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import LoginForm from '../../components/LoginForm/LoginForm';
 import SocialNetwork from '../../components/SocialNetwork/SocialNetwork';
@@ -9,6 +10,7 @@ import GoalAsk from '../../components/GoalAsk/GoalAsk';
 import GoalInfoGrid from '../../components/GoalInfoGrid/GoalInfoGrid';
 import { FaArrowRight } from 'react-icons/fa';
 import { IoArrowForward } from 'react-icons/io5';
+
 
 
 const Home = () => {
@@ -75,6 +77,23 @@ const Home = () => {
                 </div>
                 </div>
                 <a href='#' className='px-4 py-4 flex justify-end items-center gap-2 font-bold text-violet-800'>Browse catalog <IoArrowForward></IoArrowForward></a>
+            </section>
+
+            {/* business banner */}
+
+            <section className='block mx-8 bg-[#10162f] mb-32'>
+                <div className='grid grid-cols-2 gap-5'>
+                    <div className='w-full'>
+                        <img src={productBanner}></img>
+                    </div>
+                    <div className='w-full flex flex-col justify-center px-32'>
+                        <h1 className="font-smaller text-white text-[1.1rem] mb-4">Beginners welcome</h1>
+                        <h2 className='text-[2.8rem] text-white font-semibold  leading-[3rem] mb-4'>Start coding in seconds</h2>
+                        <p className='text-[1rem] text-white mb-8'>Go ahead, give it a try. Our hands-on learning environment means you’ll be writing real code from your very first lesson.</p>
+
+                        <button className="text-yellow-50 px-4 py-2 border-2 w-[10rem] border-orange-50">Continue lesson</button>
+                    </div>
+                </div>
             </section>
         </div>
     )

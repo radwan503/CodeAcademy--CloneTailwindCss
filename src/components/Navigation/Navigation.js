@@ -180,7 +180,7 @@ const Navigation = () => {
                                         {/* search button*/}
                                         <Popover className="relative mt-2">
                                             <Popover.Button className="hover:bg-white/[.50] py-2 px-2 rounded">
-                                                <IoSearchOutline className="h-7 w-7 font-thin text-black-50 " />
+                                                <IoSearchOutline className="h-6 w-6 font-thin text-black-50 "/>
                                             </Popover.Button>
                                         </Popover>
 
