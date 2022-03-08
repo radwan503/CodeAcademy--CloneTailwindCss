@@ -16,6 +16,7 @@ import { IoArrowForward } from 'react-icons/io5';
 const Home = () => {
 
     return (
+        <>
         <div id="home-page">
             {/* Navbar */}
             <Navigation></Navigation>
@@ -81,12 +82,12 @@ const Home = () => {
 
             {/* business banner */}
 
-            <section className='block mx-8 bg-[#10162f] mb-32'>
-                <div className='grid grid-cols-2 gap-5'>
+            <section className='block mx-0 sm:mx-8 bg-[#10162f] '>
+                <div className=' sm:grid sm:grid-cols-2 gap-5'>
                     <div className='w-full'>
                         <img src={productBanner}></img>
                     </div>
-                    <div className='w-full flex flex-col justify-center px-32'>
+                    <div className='w-full flex flex-col justify-center px-5 py-5 sm:px-32 sm:py-0'>
                         <h1 className="font-smaller text-white text-[1.1rem] mb-4">Beginners welcome</h1>
                         <h2 className='text-[2.8rem] text-white font-semibold  leading-[3rem] mb-4'>Start coding in seconds</h2>
                         <p className='text-[1rem] text-white mb-8'>Go ahead, give it a try. Our hands-on learning environment means you’ll be writing real code from your very first lesson.</p>
@@ -95,7 +96,25 @@ const Home = () => {
                     </div>
                 </div>
             </section>
+
+            <section className='block mx-0 sm:mx-8 bg-[#01113f] mb-32'>
+                <div className=' sm:grid sm:grid-cols-2 gap-5'>
+                <div className='w-full flex flex-col justify-center px-5 py-5 sm:px-32 sm:py-0'>
+                        <h1 className="font-smaller text-white text-[1.1rem] mb-4">Beginners welcome</h1>
+                        <h2 className='text-[2.8rem] text-white font-semibold  leading-[3rem] mb-4'>Start coding in seconds</h2>
+                        <p className='text-[1rem] text-white mb-8'>Go ahead, give it a try. Our hands-on learning environment means you’ll be writing real code from your very first lesson.</p>
+
+                        <button className="text-yellow-50 px-4 py-2 border-2 w-[10rem] border-orange-50">Continue lesson</button>
+                    </div>
+                    <div className='w-full'>
+                        <img src={productBanner}></img>
+                    </div>
+                    
+                </div>
+            </section>
         </div>
+     </>
+        
     )
 }
 
